@@ -1,10 +1,10 @@
-# 什么是Node.js  ?   
+# Node.js 是什么 ?   
 
 Node.js 不是一门新的编程语言，也不是一个 JavaScript 框架，而是 一个 Javascript运行环境 ( runtime environment )  。
 Node.js 是一个基于 Chrome V8引擎 的 JavaScript 运行环境，让我们可以 在服务器端 运行 JavaScript 代码。
 Node.js 与 浏览器 都是  运行环境，都能够解析 JS 程序。
 
-# 运行环境是什么？
+# 运行环境 是什么？
 
 运行环境，就是 程序 在运行期间 需要依赖的一系列组件 或者 工具；把这些工具和组件 打包在一起提供给程序员，程序员就能运行自己编写的代码了。
 
