@@ -1,10 +1,12 @@
 # Node.js 是什么 ?   
+Node.js 不是一门新的编程语言，也不是一个 JavaScript 框架，而是 一个 Javascript运行环境 ( runtime environment )  。  
 
-Node.js 不是一门新的编程语言，也不是一个 JavaScript 框架，而是 一个 Javascript运行环境 ( runtime environment )  。
-Node.js 是一个 基于 Chrome 的 V8 引擎 的 JavaScript 运行环境，让我们可以 在服务器端 运行 JavaScript 代码。
-Node.js 与 浏览器 都是 **运行环境**，都能够解析 JS 程序，而且 Node.js 还提供了 文件读写、网络通信 等 浏览器没有的能力。
+Node.js 是一个 基于 Chrome 的 V8 引擎 的 JavaScript 运行环境，让我们可以 在服务器端 运行 JavaScript 代码。  
 
-运行环境 = 能让 JavaScript 代码 跑起来 的 **地方**。
+Node.js 与 浏览器 都是 **运行环境**，都能够解析 JS 程序，而且 Node.js 还提供了 文件读写、网络通信 等 浏览器没有的能力。  
+
+运行环境 = 能让 JavaScript 代码 跑起来 的 **地方**。  
+
 就像 手机 需要操作系统（iOS/安卓）才能 运行APP 一样，JavaScript 也需要一个环境来执行代码，否则 它就是一堆没用的文本。
 
 # 运行环境 是什么？
