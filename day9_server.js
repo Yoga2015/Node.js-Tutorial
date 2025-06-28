@@ -1,8 +1,7 @@
-// 导入所需模块
-const cluster = require('cluster'); // Node.js集群模块
-const os = require('os'); // 操作系统模块
-const express = require('express'); // Express框架
-const process = require('process'); // 进程模块
+const cluster = require('cluster');     // Node.js集群模块
+const os = require('os');               // 操作系统模块
+const express = require('express'); 
+const process = require('process');     // 进程模块
 
 // 获取CPU核心数
 const numCPUs = os.cpus().length;
@@ -25,6 +24,7 @@ if (cluster.isMaster) {
     
     // 2. 添加内存监控
     setInterval(() => {
+
         // 遍历所有工作进程
         for (const id in cluster.workers) {
             const worker = cluster.workers[id];
@@ -32,15 +32,18 @@ if (cluster.isMaster) {
             const memoryUsage = process.memoryUsage().rss / (1024 * 1024);
             console.log(`工作进程 ${worker.process.pid} 内存使用: ${memoryUsage.toFixed(2)} MB`);
         }
+
     }, 5000); // 每5秒监控一次
     
 } else {
+
     // 工作进程代码
     const app = express();
     const PORT = 3000;
     
     // 3. 对比性能差异的路由
     app.get('/heavy-task', (req, res) => {
+
         // 模拟CPU密集型任务
         let result = 0;
         for (let i = 0; i < 1e7; i++) {
