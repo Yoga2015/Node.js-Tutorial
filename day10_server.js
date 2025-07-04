@@ -1,8 +1,7 @@
-// 导入express框架
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000; // 使用环境变量中的端口或默认3000
+const PORT = process.env.PORT || 3000;    // 使用环境变量中的端口或默认3000
 
 // 配置静态文件服务
 // __dirname: 当前文件所在目录
