@@ -35,23 +35,48 @@ apiRouter.get('/memes', (req, res) => {
     }
 });
 
-// 上传表情包
+// 上传表情包路由 - POST /api/memes
 apiRouter.post('/memes', (req, res) => {
+    // req.files: 包含上传的文件对象
+    // req.files.meme: 前端表单中name="meme"的文件输入
+    
+    // 1. 检查是否有文件上传
     if (!req.files || !req.files.meme) {
-        return res.status(400).json({ error: '请选择要上传的文件' });
+        // 返回400状态码和错误信息
+        return res.status(400).json({ 
+            error: '请选择要上传的文件',
+            hint: '请确保表单enctype="multipart/form-data"且name="meme"'
+        });
     }
 
+    // 2. 获取上传的文件对象
     const memeFile = req.files.meme;
+    
+    // 3. 生成唯一文件名 (时间戳+原始文件名)
     const fileName = `${Date.now()}_${memeFile.name}`;
+    
+    // 4. 构造文件保存路径
     const filePath = path.join(uploadDir, fileName);
 
+    // 5. 移动文件到目标目录
     memeFile.mv(filePath, (err) => {
+        // err: 移动文件时可能发生的错误
+        
         if (err) {
-            return res.status(500).json({ error: '文件上传失败' });
+            // 返回500状态码和错误信息
+            return res.status(500).json({ 
+                error: '文件上传失败',
+                details: err.message 
+            });
         }
+        
+        // 6. 返回成功响应
         res.json({ 
             message: '上传成功',
-            url: `/uploads/${fileName}`
+            url: `/uploads/${fileName}`,
+            filename: fileName,
+            size: memeFile.size,
+            mimetype: memeFile.mimetype
         });
     });
 });
