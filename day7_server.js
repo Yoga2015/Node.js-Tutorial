@@ -1,10 +1,7 @@
-// 导入express框架
 const express = require('express');
 // 导入multer模块用于处理文件上传
 const multer = require('multer');
-// 导入path模块处理文件路径
 const path = require('path');
-// 导入fs模块进行文件系统操作
 const fs = require('fs');
 
 // 创建express应用实例
