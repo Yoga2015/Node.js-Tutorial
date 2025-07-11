@@ -57,7 +57,6 @@ app.use((err, req, res, next) => {
     }
 });
 
-// 正常路由
 app.get('/', (req, res) => {
     res.send(`
         <h1>错误处理演示</h1>
