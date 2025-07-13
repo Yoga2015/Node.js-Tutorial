@@ -1,5 +1,5 @@
 const cluster = require('cluster');     // Node.js集群模块
-const os = require('os');               // 操作系统模块
+const os = require('os');              
 const express = require('express'); 
 const process = require('process');     // 进程模块
 
