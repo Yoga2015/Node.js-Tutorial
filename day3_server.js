@@ -1,31 +1,34 @@
 // 导入Node.js内置的http模块，用于创建HTTP服务器
 const http = require('http');
-// 导入url模块，用于解析URL
+// 导入url模块，用于解析URL和查询参数
 const url = require('url');
 
 // 用 对象 存储 每日抽奖记录，结构为 {日期: [用户名1, 用户名2]}
 const dailyLotteryRecords = {};
 
 // 创建HTTP服务器
-// req - 请求对象，包含客户端请求信息、 res - 响应对象，用于向客户端返回数据
 const server = http.createServer((req, res) => {
     
-    const parsedUrl = url.parse(req.url, true);   // 解析URL，true表示同时解析查询参数
+    // 解析URL，true 表示 同时解析查询参数
+    // parsedUrl: 包含pathname、query等属性的对象
+    const parsedUrl = url.parse(req.url, true);
    
-    const pathname = parsedUrl.pathname;     // 获取URL路径部分
+    // 获取URL路径部分
+    const pathname = parsedUrl.pathname;
    
-    const query = parsedUrl.query;     // 获取查询参数对象
+    // 获取查询参数对象
+    const query = parsedUrl.query;
 
     // 路由处理
     if (pathname === '/') {
-       
-        res.writeHead(200, {'Content-Type': 'text/html'});    // 设置响应头：状态码200，内容类型为HTML
-       
-        res.end('<h1>欢迎来到幸运数字生成器 🎲</h1>');     // 返回HTML格式的欢迎页面
+        // 设置响应头：状态码200，内容类型为HTML
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        // 返回HTML格式的欢迎页面
+        res.end('<h1>欢迎来到幸运数字生成器 🎲</h1>');
         
     } else if (pathname === '/lucky') {
-       
-        handleLuckyNumber(res, query);    // 处理/lucky路径的请求
+        // 处理/lucky路径的请求
+        handleLuckyNumber(res, query);
     } else {
         // 其他路径返回404错误
         res.writeHead(404, {'Content-Type': 'text/plain'});
@@ -33,9 +36,13 @@ const server = http.createServer((req, res) => {
     }
 });
 
-// 处理幸运数字请求
-// res - 响应对象、query - 包含查询参数的对象
+/**
+ * 处理幸运数字请求
+ * @param {Object} res - 响应对象
+ * @param {Object} query - 包含查询参数的对象
+ */
 function handleLuckyNumber(res, query) {
+    
     // 从查询参数获取name，默认为"神秘人"
     const name = query.name || '神秘人';
     // 获取当前日期，格式为YYYY-MM-DD
