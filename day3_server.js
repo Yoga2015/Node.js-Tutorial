@@ -1,4 +1,3 @@
-// 导入Node.js内置的http模块，用于创建HTTP服务器
 const http = require('http');
 // 导入url模块，用于解析URL和查询参数
 const url = require('url');
