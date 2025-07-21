@@ -83,9 +83,8 @@ app.get('/users', (req, res) => {
     res.json(users);
 });
 
-// 启动服务器监听指定端口
+
 app.listen(PORT, () => {
-    // 服务器启动后打印日志信息
     console.log(`用户服务运行在 http://localhost:${PORT}`);
     console.log('可用端点:');
     console.log(`POST http://localhost:${PORT}/register`);
