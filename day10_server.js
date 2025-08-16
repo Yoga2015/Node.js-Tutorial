@@ -29,7 +29,7 @@ apiRouter.get('/memes', (req, res) => {
             url: `/uploads/${file}`,
             likes: 0
         }));
-        res.json(memes);
+        res.json(memes);     
     } catch (error) {
         res.status(500).json({ error: '获取表情包失败' });
     }
