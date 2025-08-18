@@ -17,7 +17,7 @@ if (cluster.isMaster) {
     
     // 监听工作进程退出事件
     cluster.on('exit', (worker, code, signal) => {
-        console.log(`工作进程 ${worker.process.pid} 已退出`);
+        console.log(`工作进程 ${worker.process.pid} 已退出，代码: ${code}, 信号: ${signal}`);
         // 自动重启工作进程
         cluster.fork();
     });
@@ -33,7 +33,7 @@ if (cluster.isMaster) {
             console.log(`工作进程 ${worker.process.pid} 内存使用: ${memoryUsage.toFixed(2)} MB`);
         }
 
-    }, 5000); // 每5秒监控一次
+    }, 5000); 
     
 } else {
 
